@@ -4,8 +4,9 @@ require('./server.js')
 const Database = require("@replit/database")
 const db = new Database()
 const chalk = require("chalk")
+const dotenv = require("dotenv").config()
 client.on('ready', () => {
-  
+
   console.log("Bloxington running successfully (Ready event)")
 client.user.setActivity("over bloxington", {
   type: "WATCHING"
