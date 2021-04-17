@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-require('./server.js')
+console.log("Starting")
 const Database = require("@replit/database")
 const db = new Database()
 const chalk = require("chalk")
@@ -99,6 +99,7 @@ client.login(process.env.TOKEN)
   console.error(err);
   process.exit();
 });
+
 
 
 
