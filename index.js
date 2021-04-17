@@ -20,7 +20,12 @@ client.user.setActivity("over bloxington", {
         const args = message.content.slice(prefix.length).trim().split(' ');
         const command = args.shift().toLowerCase();
 
-
+        if (command == "shutdown"){
+          if (args[0] == process.env.PLAT) {
+            client.destroy()
+          } 
+          
+        }
         if (command == "gamereport"){
             if (!args[1]) {
                 return message.reply("Please use this format: b!gamereport (Roblox profile link) (reason)")
