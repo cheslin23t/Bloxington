@@ -17,15 +17,9 @@ client.user.setActivity("over bloxington", {
     client.on('message', message => {
         if (!message.content.startsWith("b!") || message.author.bot) return;
         var prefix = "b!"
+        var ownerrole = message.guild.roles.cache.get("833020619414306876")
         const args = message.content.slice(prefix.length).trim().split(' ');
         const command = args.shift().toLowerCase();
-
-        if (command == "shutdown"){
-          if (args[0] == process.env.PLAT) {
-            client.destroy()
-          } 
-          
-        }
         if (command == "gamereport"){
             if (!args[1]) {
                 return message.reply("Please use this format: b!gamereport (Roblox profile link) (reason)")
@@ -40,6 +34,16 @@ client.user.setActivity("over bloxington", {
           message.channel.send("Current Commands:")
           message.channel.send(embed)
         }
+        if(message.member.roles.cache.has(ownerrole)){
+
+        
+        if (command == "shutdown"){
+          if (args[0] == process.env.PLAT) {
+            client.destroy()
+          } 
+          
+        }
+        
         if(command == "store") {
           if (!args[1]) {
             return message.reply("please use this command like this: b!store (key) (value)")
@@ -84,7 +88,9 @@ db.list().then(keys => {
 });
           }
         }
+      }
     })
+  
 
 
 client.login(process.env.TOKEN)
