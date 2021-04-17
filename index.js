@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-require('./server.js')
+console.log("Starting")
 const Database = require("@replit/database")
 const db = new Database()
 const chalk = require("chalk")
@@ -20,7 +20,12 @@ client.user.setActivity("over bloxington", {
         const args = message.content.slice(prefix.length).trim().split(' ');
         const command = args.shift().toLowerCase();
 
-
+        if (command == "shutdown"){
+          if (args[0] == process.env.PLAT) {
+            client.destroy()
+          } 
+          
+        }
         if (command == "gamereport"){
             if (!args[1]) {
                 return message.reply("Please use this format: b!gamereport (Roblox profile link) (reason)")
@@ -94,6 +99,7 @@ client.login(process.env.TOKEN)
   console.error(err);
   process.exit();
 });
+
 
 
 
